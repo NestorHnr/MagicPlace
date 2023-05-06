@@ -4,6 +4,7 @@ using MagicPlace_API.DataAdapters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MagicPlace_API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230506142224_AddCatgegoryPlaceModels")]
+    partial class AddCatgegoryPlaceModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,9 +28,6 @@ namespace MagicPlace_API.Migrations
             modelBuilder.Entity("MagicPlace_API.Models.CategoryPlace", b =>
                 {
                     b.Property<int>("NuCategory")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Cost")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreateTime")
@@ -98,8 +98,8 @@ namespace MagicPlace_API.Migrations
                         {
                             Id = 1,
                             Cost = 5.0,
-                            DateCreate = new DateTime(2023, 5, 6, 10, 36, 20, 993, DateTimeKind.Local).AddTicks(9039),
-                            DateUpdate = new DateTime(2023, 5, 6, 10, 36, 20, 993, DateTimeKind.Local).AddTicks(9052),
+                            DateCreate = new DateTime(2023, 5, 6, 9, 22, 24, 401, DateTimeKind.Local).AddTicks(9941),
+                            DateUpdate = new DateTime(2023, 5, 6, 9, 22, 24, 401, DateTimeKind.Local).AddTicks(9955),
                             Detail = "test",
                             ImageUrl = "test",
                             Name = "Test",

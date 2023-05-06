@@ -11,14 +11,18 @@ namespace MagicPlace_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PlaceController : ControllerBase
+    public class CategoryPlaceController : ControllerBase
     {
+        private readonly ICategoryPlaceRepository _CategoryRepo;
         private readonly IPlaceRepository _placeRepo;
         private readonly IMapper _mapper;
         protected APIResponse _response;
 
-        public PlaceController(IPlaceRepository placeRepo, IMapper mapper)
+        public CategoryPlaceController(ICategoryPlaceRepository categoryRepo,
+                                       IPlaceRepository placeRepo,
+                                       IMapper mapper)
         {
+            _CategoryRepo = categoryRepo;
             _placeRepo = placeRepo;
             _mapper = mapper;
             _response = new();
@@ -27,13 +31,13 @@ namespace MagicPlace_API.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)] //Esto es para documentar los estados
 
-        public async Task<ActionResult<APIResponse>> GetAllPlace()
+        public async Task<ActionResult<APIResponse>> GetAllCategoryPlace()
         {
             try
             {
-                IEnumerable<Place> PlaceList = await _placeRepo.GetAll();
+                IEnumerable<CategoryPlace> CategoryList = await _CategoryRepo.GetAll();
 
-                _response.Result = _mapper.Map<IEnumerable<PlaceDto>>(PlaceList);
+                _response.Result = _mapper.Map<IEnumerable<CategoryPlaceDto>>(CategoryList);
                 _response.StatusCode = HttpStatusCode.OK;
 
                 return Ok(_response);
@@ -47,12 +51,12 @@ namespace MagicPlace_API.Controllers
         }
 
 
-        [HttpGet("id:int", Name = "GetByIdPlace")]
+        [HttpGet("id:int", Name = "GetByIdCategoryPlace")]
         [ProducesResponseType(StatusCodes.Status200OK)] //Esto es para documentar los estados
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
 
-        public async Task<ActionResult<APIResponse>> GetByIdPlace(int id)
+        public async Task<ActionResult<APIResponse>> GetByIdCategoryPlace(int id)
         {
             try
             {
@@ -62,15 +66,15 @@ namespace MagicPlace_API.Controllers
                     _response.IsExitoso = false;
                     return BadRequest(_response);
                 }
-                var place = await _placeRepo.GetById(v => v.Id == id);
+                var categoryPlace = await _CategoryRepo.GetById(v => v.NuCategory == id);
 
-                if (place == null)
+                if (categoryPlace == null)
                 {
                     _response.StatusCode = HttpStatusCode.NotFound;
                     _response.IsExitoso = false;
                     return NotFound(_response);
                 }
-                _response.Result = _mapper.Map<PlaceDto>(place);
+                _response.Result = _mapper.Map<CategoryPlaceDto>(categoryPlace);
                 _response.StatusCode = HttpStatusCode.OK;
 
                 return Ok(_response);
@@ -89,7 +93,7 @@ namespace MagicPlace_API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<ActionResult<APIResponse>> CreatePlace([FromBody] PlaceCreateDto createDto)
+        public async Task<ActionResult<APIResponse>> CategoryCreatePlace([FromBody] CategoryCreatePlaceDto createDto)
         {
             try
             {
@@ -98,9 +102,15 @@ namespace MagicPlace_API.Controllers
                     return BadRequest(ModelState);
                 }
 
-                if (await _placeRepo.GetById(v => v.Name.ToLower() == createDto.Name.ToLower()) != null)
+                if (await _CategoryRepo.GetById(v => v.NuCategory == createDto.NuCategory) != null)
                 {
-                    ModelState.AddModelError("NombreExiste", "La villa con ese nombre ya existe");
+                    ModelState.AddModelError("CategoriaExiste", "Esta categoria ya existe");
+                    return BadRequest(ModelState);
+                }
+
+                if (await _placeRepo.GetById(v => v.Id == createDto.PlaceId) == null)
+                {
+                    ModelState.AddModelError("LugarExiste", "El id de este lugar no existe");
                     return BadRequest(ModelState);
                 }
 
@@ -109,15 +119,15 @@ namespace MagicPlace_API.Controllers
                     return BadRequest(createDto);
                 }
 
-                Place modelo = _mapper.Map<Place>(createDto);
+                CategoryPlace modelo = _mapper.Map<CategoryPlace>(createDto);
 
-                modelo.DateCreate = DateTime.Now;
-                modelo.DateUpdate = DateTime.Now;
-                await _placeRepo.Create(modelo);
+                modelo.CreateTime = DateTime.Now;
+                modelo.UpdateTime = DateTime.Now;
+                await _CategoryRepo.Create(modelo);
                 _response.Result = modelo;
                 _response.StatusCode = HttpStatusCode.Created;
 
-                return CreatedAtRoute("GetByIdPlace", new { id = modelo.Id }, _response);
+                return CreatedAtRoute("GetByIdCategoryPlace", new { id = modelo.NuCategory }, _response);
             }
             catch (Exception ex)
             {
@@ -132,7 +142,7 @@ namespace MagicPlace_API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
 
-        public async Task<IActionResult> DeletePlace(int id)
+        public async Task<IActionResult> DeleteCategoryPlace(int id)
         {
             try
             {
@@ -143,7 +153,7 @@ namespace MagicPlace_API.Controllers
                     return BadRequest(_response);
                 }
 
-                var place = await _placeRepo.GetById(v => v.Id == id);
+                var place = await _CategoryRepo.GetById(v => v.NuCategory == id);
 
                 if (place == null)
                 {
@@ -151,7 +161,7 @@ namespace MagicPlace_API.Controllers
                     _response.StatusCode = HttpStatusCode.NotFound;
                     return NotFound(_response);
                 }
-                await _placeRepo.Delete(place);
+                await _CategoryRepo.Delete(place);
 
                 _response.StatusCode = HttpStatusCode.NoContent;
                 return Ok(_response);
@@ -168,57 +178,26 @@ namespace MagicPlace_API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)] //Esto es para documentar los estados
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-        public async Task<IActionResult> UpdatePlace(int id, [FromBody] PlaceUpdateDto updateDto)
+        public async Task<IActionResult> CategoryUpdate(int id, [FromBody] CategoryUpdatePlaceDto updateDto)
         {
             try
             {
-                if (updateDto == null || id != updateDto.Id)
+                if (updateDto == null || id != updateDto.NuCategory)
                 {
                     _response.IsExitoso = false;
                     _response.StatusCode = HttpStatusCode.BadRequest;
                     return BadRequest(_response);
                 }
 
-                Place modelo = _mapper.Map<Place>(updateDto);
-
-                await _placeRepo.PlaceUpdate(modelo);
-                _response.StatusCode = HttpStatusCode.NoContent;
-
-                return Ok(_response);
-            }
-            catch (Exception ex)
-            {
-                _response.IsExitoso = false;
-                _response.ErrorMessages = new List<string>() { ex.ToString() };
-            }
-            return Ok(_response);
-        }
-
-        [HttpPatch("{id:int}")]
-        [ProducesResponseType(StatusCodes.Status200OK)] //Esto es para documentar los estados
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-
-        public async Task<IActionResult> UpdatePatcPlace(int id, JsonPatchDocument<PlaceUpdateDto> patchDto)
-        {
-            try
-            {
-                if (patchDto == null || id == 0)
+                if (await _placeRepo.GetById(v => v.Id == updateDto.PlaceId) == null)
                 {
-                    return BadRequest();
-                }
-                var place = await _placeRepo.GetById(v => v.Id == id, tracked: false);
-                PlaceUpdateDto placeDto = _mapper.Map<PlaceUpdateDto>(place);
-
-                if (place == null) return BadRequest();
-                patchDto.ApplyTo(placeDto, ModelState);
-
-                if (!ModelState.IsValid)
-                {
+                    ModelState.AddModelError("LugarExiste", "El id de este lugar no existe");
                     return BadRequest(ModelState);
                 }
 
-                Place modelo = _mapper.Map<Place>(placeDto);
-                await _placeRepo.PlaceUpdate(modelo);
+                CategoryPlace modelo = _mapper.Map<CategoryPlace>(updateDto);
+
+                await _CategoryRepo.CategoryPlaceUpdate(modelo);
                 _response.StatusCode = HttpStatusCode.NoContent;
 
                 return Ok(_response);

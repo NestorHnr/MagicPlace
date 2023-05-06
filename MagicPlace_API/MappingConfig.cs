@@ -12,9 +12,9 @@ namespace MagicPlace_API
             CreateMap<Place, PlaceCreateDto>().ReverseMap();
             CreateMap<Place, PlaceUpdateDto>().ReverseMap();
 
-            //CreateMap<NumberVilla, NumberVillaDto>().ReverseMap();
-            //CreateMap<NumberVilla, NumberVillaCreateDto>().ReverseMap();
-            //CreateMap<NumberVilla, NumberVillaUpdateDto>().ReverseMap();
+            CreateMap<CategoryPlace, CategoryPlaceDto>().ReverseMap();
+            CreateMap<CategoryPlace, CategoryCreatePlaceDto>().ReverseMap();
+            CreateMap<CategoryPlace, CategoryUpdatePlaceDto>().ReverseMap();
         }
     }
 }

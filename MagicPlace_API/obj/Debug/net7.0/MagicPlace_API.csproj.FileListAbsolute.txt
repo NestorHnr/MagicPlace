@@ -5,9 +5,13 @@ C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\D
 C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\MagicPlace_API.runtimeconfig.json
 C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\MagicPlace_API.dll
 C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\MagicPlace_API.pdb
+C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\Azure.Core.dll
 C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\Azure.Identity.dll
 C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\Humanizer.dll
+C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll
@@ -29,6 +33,8 @@ C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\D
 C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\Microsoft.SqlServer.Server.dll
 C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
 C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\nesto\Dropbox\PROGRAMACION\Udemy_.Net_6\MagicPlace\MagicPlace_API\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll

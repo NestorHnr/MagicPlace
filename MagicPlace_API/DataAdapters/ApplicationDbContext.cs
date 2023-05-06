@@ -8,6 +8,7 @@ namespace MagicPlace_API.DataAdapters
         public ApplicationDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Place> Places { get; set; }
+        public DbSet<CategoryPlace> CategoriesPlaces { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

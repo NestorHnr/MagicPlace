@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MagicPlace_API.Respositories.IRespositories;
+using MagicPlace_API.Respositories.ServicesRepositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace MagicPlace_API.DataAdapters
 {
@@ -14,14 +16,14 @@ namespace MagicPlace_API.DataAdapters
                 });
 
                 services.AddHttpContextAccessor();
-                //services.AddRepositories();
+                services.AddRepositories();
                 services.AddAutoMapper(typeof(MappingConfig));
             }
 
-            //public static void AddRepositories(this IServiceCollection services)
-            //{
-            //    //services.AddScoped<IVillaRepository, VillaRepository>();
-            //    //services.AddScoped<INumberVillaRepository, NumberVillaRepository>();
-            //}
+        public static void AddRepositories(this IServiceCollection services)
+        {
+            services.AddScoped<IPlaceRepository, PlaceRepository>();
+            services.AddScoped<ICategoryPlaceRepository, CategoryPlaceRepository>();
+        }
     }
 }
