@@ -15,7 +15,7 @@ namespace MagicPlace_API.DataAdapters
 
                 services.AddHttpContextAccessor();
                 //services.AddRepositories();
-                //services.AddAutoMapper(typeof(MappingConfig));
+                services.AddAutoMapper(typeof(MappingConfig));
             }
 
             //public static void AddRepositories(this IServiceCollection services)

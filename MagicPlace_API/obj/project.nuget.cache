@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "fAo5KgKomld1LGRKVeyBha1azg9o42OeGJ/Ph/2Qe+oj7pB8LkKG2Azws+B2ycK3tT4JCpo4PuJlwzk5aNaGFQ==",
+  "dgSpecHash": "w6+y4vEzCSdluK7epKKHD1J1jf1KAwoDEbjIjwoXp8Ft/jnK+EqG0NAzZNRswj7Qtoly6keLgRoS3+Yzo7ouMA==",
   "success": true,
   "projectFilePath": "C:\\Users\\nesto\\Dropbox\\PROGRAMACION\\Udemy_.Net_6\\MagicPlace\\MagicPlace_API\\MagicPlace_API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\nesto\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\nesto\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\nesto\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\nesto\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\nesto\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
