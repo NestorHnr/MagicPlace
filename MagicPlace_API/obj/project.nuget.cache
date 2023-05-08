@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "w6+y4vEzCSdluK7epKKHD1J1jf1KAwoDEbjIjwoXp8Ft/jnK+EqG0NAzZNRswj7Qtoly6keLgRoS3+Yzo7ouMA==",
+  "dgSpecHash": "J+ymjwAA66IK5LUGpzdQc5OtC8vkxK3uY3BxWjlWGOGt+2b9FdD+rSxQ2TPzgxUaGqE86JGMcPPnoosyX4QKMA==",
   "success": true,
   "projectFilePath": "C:\\Users\\nesto\\Dropbox\\PROGRAMACION\\Udemy_.Net_6\\MagicPlace\\MagicPlace_API\\MagicPlace_API.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\nesto\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\nesto\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\nesto\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\nesto\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.5\\microsoft.aspnetcore.authentication.jwtbearer.7.0.5.nupkg.sha512",
     "C:\\Users\\nesto\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\7.0.5\\microsoft.aspnetcore.jsonpatch.7.0.5.nupkg.sha512",
     "C:\\Users\\nesto\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\7.0.5\\microsoft.aspnetcore.mvc.newtonsoftjson.7.0.5.nupkg.sha512",
     "C:\\Users\\nesto\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.5\\microsoft.aspnetcore.openapi.7.0.5.nupkg.sha512",

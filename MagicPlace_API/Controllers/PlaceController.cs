@@ -2,6 +2,7 @@
 using MagicPlace_API.Dto;
 using MagicPlace_API.Models;
 using MagicPlace_API.Respositories.IRespositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,7 @@ namespace MagicPlace_API.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)] //Esto es para documentar los estados
 
         public async Task<ActionResult<APIResponse>> GetAllPlace()
@@ -48,6 +50,7 @@ namespace MagicPlace_API.Controllers
 
 
         [HttpGet("{id:int}", Name = "GetByIdPlace")]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)] //Esto es para documentar los estados
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -85,6 +88,7 @@ namespace MagicPlace_API.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles ="Admin")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -128,6 +132,7 @@ namespace MagicPlace_API.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -165,6 +170,7 @@ namespace MagicPlace_API.Controllers
         }
 
         [HttpPut("{id:int}")]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status200OK)] //Esto es para documentar los estados
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 

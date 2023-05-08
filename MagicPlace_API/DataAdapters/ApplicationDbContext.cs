@@ -7,6 +7,7 @@ namespace MagicPlace_API.DataAdapters
     {
         public ApplicationDbContext(DbContextOptions options) : base(options) { }
 
+        public DbSet<User> Users { get; set; }
         public DbSet<Place> Places { get; set; }
         public DbSet<CategoryPlace> CategoriesPlaces { get; set; }
 

@@ -24,6 +24,7 @@ namespace MagicPlace_API.DataAdapters
         {
             services.AddScoped<IPlaceRepository, PlaceRepository>();
             services.AddScoped<ICategoryPlaceRepository, CategoryPlaceRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
     }
 }
