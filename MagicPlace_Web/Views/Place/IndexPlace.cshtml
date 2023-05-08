@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MagicPlace_Web.Dto.PlaceDto>
+@{
+    ViewData["Title"] = "IndexPlace";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class=" container p-4 border">
+    <div class=" row pb-2">
+        <div class=" col">
+            <h1 class=" text-primary">Place of List</h1>
+        </div>
+        <div class=" col text-end pt-1">
+            <a asp-controller="Place" asp-action="CreatePlace" class="btn btn-outline-primary"><i class="bi bi-plus-circle"></i> Create Place New </a>
+        </div>
+    </div>
+    <table class=" table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Ocupants</th>
+                <th>Cost</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Ocupants</td>
+                    <td>@((item.Cost).ToString("c"))</td>
+                    <td>
+                        <a asp-controller="Place" asp-action="UpdatePlace" asp-route-placeId="@item.Id" class="btn btn-success"><i class="bi bi-pencil-square"></i> </a>
+                        <a asp-controller="Place" asp-action="DeletePlace" asp-route-placeId="@item.Id" class="btn btn-danger"><i class="bi bi-trash-fill"></i> </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

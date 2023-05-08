@@ -29,17 +29,25 @@ namespace MagicPlace_API.Respositories.ServicesRepositories
                 await Save();
             }
 
-            public async Task<List<T>> GetAll(Expression<Func<T, bool>>? filtro = null)
+            public async Task<List<T>> GetAll(Expression<Func<T, bool>>? filtro = null, string? propertyInclude = null)
             {
                 IQueryable<T> query = dbSet;
                 if (filtro != null)
                 {
                     query = query.Where(filtro);
                 }
+
+                if (propertyInclude != null)
+                {
+                    foreach (var propInclude in propertyInclude.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        query = query.Include(propInclude);
+                    }
+                }
                 return await query.ToListAsync();
             }
 
-            public async Task<T> GetById(Expression<Func<T, bool>> filtro = null, bool tracked = true)
+            public async Task<T> GetById(Expression<Func<T, bool>> filtro = null, bool tracked = true, string? propertyInclude = null)
             {
                 IQueryable<T> query = dbSet;
                 if (!tracked)
@@ -49,6 +57,14 @@ namespace MagicPlace_API.Respositories.ServicesRepositories
                 if (filtro != null)
                 {
                     query = query.Where(filtro);
+                }
+
+                if (propertyInclude != null) 
+                {
+                    foreach (var propInclude in propertyInclude.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        query = query.Include(propInclude);
+                    }
                 }
                 return await query.FirstOrDefaultAsync();
             }

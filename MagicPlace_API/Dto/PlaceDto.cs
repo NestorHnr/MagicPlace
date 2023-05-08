@@ -6,13 +6,13 @@ namespace MagicPlace_API.Dto
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Name is Required")]
         [MaxLength(100)]
         public string Name { get; set; }
 
         public string Detail { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Cost is Required")]
         public double Cost { get; set; }
 
         public int Ocupants { get; set; }

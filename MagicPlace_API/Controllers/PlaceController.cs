@@ -47,7 +47,7 @@ namespace MagicPlace_API.Controllers
         }
 
 
-        [HttpGet("id:int", Name = "GetByIdPlace")]
+        [HttpGet("{id:int}", Name = "GetByIdPlace")]
         [ProducesResponseType(StatusCodes.Status200OK)] //Esto es para documentar los estados
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -100,7 +100,7 @@ namespace MagicPlace_API.Controllers
 
                 if (await _placeRepo.GetById(v => v.Name.ToLower() == createDto.Name.ToLower()) != null)
                 {
-                    ModelState.AddModelError("NombreExiste", "La villa con ese nombre ya existe");
+                    ModelState.AddModelError("ErrorMessages", "La villa con ese nombre ya existe");
                     return BadRequest(ModelState);
                 }
 
@@ -127,7 +127,7 @@ namespace MagicPlace_API.Controllers
             return _response;
         }
 
-        [HttpDelete("id:int")]
+        [HttpDelete("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

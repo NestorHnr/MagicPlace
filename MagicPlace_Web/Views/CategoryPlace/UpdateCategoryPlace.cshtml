@@ -1,0 +1,56 @@
+﻿@model MagicPlace_Web.Models.ViewModel.CategoryPlaceUpdateViewModel
+@{
+    ViewData["Title"] = "UpdateCategoryPlace";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="UpdateCategoryPlace">
+    <div class="container border p-3">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <input asp-for="CategoryPlace.NuCategory" hidden />
+
+        <div class="row">
+            <h2 class="text-info"> Update Category Place</h2>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-md-6">
+                <label class="form-label">Category Place</label>
+                <input asp-for="CategoryPlace.NuCategory" disabled class="form-control" />
+                <span asp-validation-for="CategoryPlace.NuCategory" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-md-6">
+                <label class="form-label">Place</label>
+                <select asp-for="CategoryPlace.PlaceId" class="form-select" asp-items="@Model.ListPlace">
+                    <option value="">-- Select Place --</option>
+                </select>
+                <span asp-validation-for="CategoryPlace.PlaceId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-md-6">
+                <label class="form-label">Specials Details</label>
+                <textarea asp-for="CategoryPlace.SpecialDetails" class="form-control"></textarea>
+                <span asp-validation-for="CategoryPlace.SpecialDetails" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-md-6">
+                <label class="col-md-6">Adicional Cost</label>
+                <input asp-for="CategoryPlace.Cost" class="form-control" />
+                <span asp-validation-for="CategoryPlace.Cost" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="d-grid gap-2 d-md-block mt-2">
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a asp-controller="CategoryPlace" asp-action="IndexCategoryPlace" class="btn btn-success">Back</a>
+        </div>
+    </div>
+</form>

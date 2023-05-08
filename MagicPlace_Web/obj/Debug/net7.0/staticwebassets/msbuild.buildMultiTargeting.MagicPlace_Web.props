@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\MagicPlace_Web.props" />
+</Project>

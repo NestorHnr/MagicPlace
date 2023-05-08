@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MagicPlace_API.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace MagicPlace_API.Dto
 {
@@ -10,7 +11,10 @@ namespace MagicPlace_API.Dto
         public int PlaceId { set; get; }
 
         public string SpecialDetails { set; get; }
+
         public int Cost { set; get; }
+
+        public PlaceDto Place { set; get; }
 
     }
 }

@@ -9,6 +9,8 @@ namespace MagicPlace_API.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Required]
+        [MaxLength(100)]
         public string Name { get; set; }
 
         public string Detail { get; set; }

@@ -37,7 +37,6 @@ namespace MagicPlace_API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("SpecialDetails")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdateTime")
@@ -68,22 +67,20 @@ namespace MagicPlace_API.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Detail")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int>("Ocupants")
                         .HasColumnType("int");
 
                     b.Property<string>("Service")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SquareMeters")
@@ -98,8 +95,8 @@ namespace MagicPlace_API.Migrations
                         {
                             Id = 1,
                             Cost = 5.0,
-                            DateCreate = new DateTime(2023, 5, 6, 10, 36, 20, 993, DateTimeKind.Local).AddTicks(9039),
-                            DateUpdate = new DateTime(2023, 5, 6, 10, 36, 20, 993, DateTimeKind.Local).AddTicks(9052),
+                            DateCreate = new DateTime(2023, 5, 6, 15, 37, 22, 687, DateTimeKind.Local).AddTicks(3098),
+                            DateUpdate = new DateTime(2023, 5, 6, 15, 37, 22, 687, DateTimeKind.Local).AddTicks(3110),
                             Detail = "test",
                             ImageUrl = "test",
                             Name = "Test",

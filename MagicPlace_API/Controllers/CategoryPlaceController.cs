@@ -35,7 +35,7 @@ namespace MagicPlace_API.Controllers
         {
             try
             {
-                IEnumerable<CategoryPlace> CategoryList = await _CategoryRepo.GetAll();
+                IEnumerable<CategoryPlace> CategoryList = await _CategoryRepo.GetAll(propertyInclude: "Place");
 
                 _response.Result = _mapper.Map<IEnumerable<CategoryPlaceDto>>(CategoryList);
                 _response.StatusCode = HttpStatusCode.OK;
@@ -51,7 +51,7 @@ namespace MagicPlace_API.Controllers
         }
 
 
-        [HttpGet("id:int", Name = "GetByIdCategoryPlace")]
+        [HttpGet("{id:int}", Name = "GetByIdCategoryPlace")]
         [ProducesResponseType(StatusCodes.Status200OK)] //Esto es para documentar los estados
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -66,7 +66,7 @@ namespace MagicPlace_API.Controllers
                     _response.IsExitoso = false;
                     return BadRequest(_response);
                 }
-                var categoryPlace = await _CategoryRepo.GetById(v => v.NuCategory == id);
+                var categoryPlace = await _CategoryRepo.GetById(v => v.NuCategory == id, propertyInclude:"Place");
 
                 if (categoryPlace == null)
                 {
@@ -104,13 +104,13 @@ namespace MagicPlace_API.Controllers
 
                 if (await _CategoryRepo.GetById(v => v.NuCategory == createDto.NuCategory) != null)
                 {
-                    ModelState.AddModelError("CategoriaExiste", "Esta categoria ya existe");
+                    ModelState.AddModelError("ErrorMessages", "Esta categoria ya existe");
                     return BadRequest(ModelState);
                 }
 
                 if (await _placeRepo.GetById(v => v.Id == createDto.PlaceId) == null)
                 {
-                    ModelState.AddModelError("LugarExiste", "El id de este lugar no existe");
+                    ModelState.AddModelError("ErrorMessages", "El id de este lugar no existe");
                     return BadRequest(ModelState);
                 }
 
@@ -137,7 +137,7 @@ namespace MagicPlace_API.Controllers
             return _response;
         }
 
-        [HttpDelete("id:int")]
+        [HttpDelete("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -191,7 +191,7 @@ namespace MagicPlace_API.Controllers
 
                 if (await _placeRepo.GetById(v => v.Id == updateDto.PlaceId) == null)
                 {
-                    ModelState.AddModelError("LugarExiste", "El id de este lugar no existe");
+                    ModelState.AddModelError("ErrorMessages", "El id de este lugar no existe");
                     return BadRequest(ModelState);
                 }
 
